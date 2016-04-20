@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+button {
+    padding: 1px;
+}
+#head {
+    line-height: 65px;
+    background-color: #2196F3;
+    color: #f0ffff;
+    text-align: center;
+    height: 65px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 26px;
+    box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+}
+#main, #footer {
+    text-align: center;
+    padding-top: 20px;
+    width: 1280px;
+    margin: 0 auto;
+}
+#left {
+    width: 75px;
+    height: 650px;
+    float: left;
+    text-align: center;
+}
+#footer {
+    font-size: 15px;
+    clear: both;
+}
+#mask {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    overflow: scroll;
+}
+#right {
+    margin-left: 150px;
+    width: 1050px;
+    height: 650px;
+}
+#tool_bar {
+    width: 1050px;
+    height: 30px;
+    text-align: left;
+}
+#right_main, #right_doc, #right_photo, #right_msg {
+    margin-top: 20px;
+    display: none;
+}
+#separator {
+    height: 600px;
+    border: 1px solid #CCCCCC;
+    float: left;
+    margin-left: 30px;
+}
+#btn_doc div {
+    background-color: #E91E63;
+}
+#btn_photo div {
+    background-color: #00BCD4;
+}
+#btn_msg div {
+    background-color: #009688;
+}
+.left_btn {
+    font-size: 12px;
+    margin-top: 30px;
+    width: 75px;
+    height: 75px;
+    line-height: 75px;
+    border-radius: 50%;
+    box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+    transition: box-shadow 0.5s;
+}
+.left_btn:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.22), 0 14px 56px rgba(0, 0, 0, 0.25);
+}
+.left_btn img {
+    vertical-align: middle;
+    width: 50%;
+    height: 50%;
+}
+#left p {
+    display: none;
+    font-size: 14px;
+    font-family: Helvetica, Arial, sans-serif;
+    padding: 2px;
+    margin: 4px;
+}
+.pin {
+    font-size: 12px;
+    padding: 9px;
+    float: left;
+}
+.pin p {
+    width: 105px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 2px;
+    margin: 4px;
+}
+.box {
+    padding: 3px;
+    box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+    -webkit-transition: box-shadow 0.5s ease;
+    -o-transition: box-shadow 0.5s ease;
+    transition: box-shadow 0.5s ease;
+    font-size: 0;
+}
+.box:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.22), 0 14px 56px rgba(0, 0, 0, 0.25);
+}
+#right_main p {
+    margin: 0 auto;
+}
+#right_photo .box img {
+    width: 149px;
+    height: 85px;
+}
+#right_doc .box img {
+    width: 105px;
+    height: 130px;
+}
+#mask-head {
+    width: 100%;
+    box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+    background-color: #3F51B5;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #f0ffff;
+    height: 65px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
+#mask-toolbar {
+    height: 20px;
+    float: left;
+    position: relative;
+    left: 50%;
+}
+#toolbar-btn {
+    position: relative;
+    left: -50%;
+    overflow: hidden;
+}
+#text {
+    outline: none;
+    width: 800px;
+    margin: 90px auto 20px auto;
+    padding: 30px;
+    box-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+    min-height: 400px;
+    transition: box-shadow 0.5s;
+}
+#text:focus {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.22), 0 14px 56px rgba(0, 0, 0, 0.25);
+}
+#filename {
+    width: 100%;
+    height: 45px;
+    font-size: 26px;
+    line-height: 45px;
+}
+.btn-group {
+    float: left;
+    margin-right: 20px;
+}
+#right_menu {
+    background-color: white;
+    display: none;
+    width: 100px;
+    height: auto;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 0 10px #CCCCCC;
+    padding: 5px;
+    font-size: 14px;
+}
+#right_menu li {
+    position: relative;
+    vertical-align: top;
+    list-style: none;
+}
+#right_menu li a {
+    display: block;
+    padding-left: 5px;
+}
+#right_menu li.active {
+    background: #CCCCCC;
+}
+#right_menu li.active a {
+    color: white;
+    background: #CCCCCC;
+}

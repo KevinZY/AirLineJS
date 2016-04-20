@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AirLine</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="dist/sweetalert.css" />
+    <link rel="stylesheet" href="dist/lightcase.css">
+</head>
+
+<body>
+    <div id="head"><a href="" id="btn_head">AirLine</a></div>
+    <div id="main">
+        <div id="left">
+            <a href="" id="btn_doc">
+                <div class="left_btn">
+                    <img src="images/doc2.png" alt="doc" />
+                </div>
+                <p class="tip">文件</p>
+            </a>
+            <a href="" id="btn_photo">
+                <div class="left_btn">
+                    <img src="images/photo2.png" alt="photo" />
+                </div>
+                <p class="tip">相片</p>
+            </a>
+            <a href="" id="btn_msg">
+                <div class="left_btn">
+                    <img src="images/msg2.png" alt="msg" />
+                </div>
+                <p class="tip">信息</p>
+            </a>
+        </div>
+        <div id="separator"></div>
+        <div id="right">
+            <div id="tool_bar">
+                <input type="file" id="uploadFile" accept="image/*" />
+                <button id="upload">上传</button>
+                <button id="newdoc">新建文档</button>
+                <button id="refresh">刷新</button>
+            </div>
+            <div id="right_main">
+                <div>
+                    <p>Welcome!</p>
+                    <p>Click buttons of left to view your files!</p>
+                </div>
+            </div>
+            <div id="right_doc"></div>
+            <div id="right_photo"></div>
+            <div id="right_msg"></div>
+        </div>
+    </div>
+    <!-- <div id="footer">张洋(04012429) AirLine edition:0</div> -->
+    <div id="right_menu">
+        <ul>
+            <li><a href="" id="rename">重命名</a></li>
+            <!--<hr/>-->
+            <li><a href="" id="delete">删除</a></li>
+        </ul>
+    </div>
+    <div id="mask">
+        <div id='mask-head'>
+            <p id="filename">Initializing</p>
+            <div id="mask-toolbar">
+                <div id="toolbar-btn">
+                    <div class='btn-group'>
+                        <button class="style-control" data-role='bold'><b>Bold</b></button>
+                        <button class="style-control" data-role='italic'><em>Italic</em></button>
+                        <button class="style-control" data-role='underline'><u><b>U</b></u></button>
+                        <button class="style-control" data-role='strikeThrough'><strike>abc</strike></button>
+                    </div>
+                    <div class='btn-group'>
+                        <button class="style-control" data-role='justifyLeft'>左对齐</button>
+                        <button class="style-control" data-role='justifyCenter'>中对齐</button>
+                        <button class="style-control" data-role='justifyRight'>右对齐</button>
+                        <button class="style-control" data-role='justifyFull'>全部对齐</button>
+                    </div>
+                    <div class='btn-group'>
+                        <button class="style-control" data-role='insertUnorderedList'>无序列表</button>
+                        <button class="style-control" data-role='insertOrderedList'>有序列表</button>
+                    </div>
+                    <div class='btn-group'>
+                        <button class="style-control" data-role='h1'>h1</button>
+                        <button class="style-control" data-role='h2'>h2</button>
+                        <button class="style-control" data-role='p'>p</button>
+                    </div>
+                    <div class="btn-group">
+                        <button id="save">保存</button>
+                        <button id="close">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="text" contenteditable="true">
+            <h1>Initializing</h1>
+        </div>
+    </div>
+
+    <!--<script src="dist/jquery-2.2.3.min.js"></script>-->
+    <script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+    <script src="https://cdn1.lncld.net/static/js/av-mini-0.6.4.js"></script>
+    <script src="dist/lightcase.js"></script>
+    <script src="dist/sweetalert.min.js"></script>
+    <script src="scripts/ToolFunctions.js"></script>
+    <script src="scripts/Main.js"></script>
+</body>
+
+</html>
