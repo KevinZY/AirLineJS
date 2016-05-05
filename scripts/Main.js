@@ -9,6 +9,7 @@ $(function() {
 
 var IMGLIST = AV.Object.extend("imgList");
 var DOCLIST = AV.Object.extend("docList");
+var MSGLIST = AV.Object.extend("msgList");
 
 function Init() {
     $("#right_main").show();
@@ -142,6 +143,34 @@ function InitBtns() {
         mouseleave: function() {
             $(this).children(".tip").slideUp(200);
         }
+    });
+
+    $('.message-input').submit(function () {
+        var input = $(".message-input :text");
+        var msg = input.val();
+        if (msg == ''){
+            swal({
+                title: "请输入信息内容!",
+                timer: 1000,
+                type: 'info',
+                showConfirmButton: false
+            });
+            return false;
+        }
+        MSGLIST.new({
+            msg: msg
+        }).save().then(function () {
+            input.val('');
+            refreshMsgs();
+        }, function (err) {
+            swal({
+                title: "错误!",
+                text: "信息发送失败!错误代码" + err.code,
+                type: "error"
+            });
+            console.log(err);
+        });
+        return false;
     });
 }
 
@@ -490,4 +519,31 @@ function refreshPhotos() {
     });
 }
 
-function refreshMsgs() {}
+function refreshMsgs() {
+    var query = new AV.Query('msgList');
+    query.addDescending('updatedAt');
+    var msgList = $(".message-list");
+    msgList.empty();
+    query.find().then(function (results) {
+        if(results.length == 0){
+            var noMsg = $("<li></li>").appendTo(msgList);
+            $("<p></p>").text("/(ㄒoㄒ)/~~没有信息,发送一条试试吧~").appendTo(noMsg);
+        }
+        for(var i= 0; i< results.length; i++){
+            var object = results[i];
+            var msg = object.get('msg');
+            var time = object.updatedAt;
+            var timeString ="(" + (time.getMonth()+1) +"月"+time.getDate()+"日 "+time.getHours()+":"+time.getMinutes()+")";
+            var li = $("<li></li>").appendTo(msgList);
+            var p = $("<p></p>").text(msg).appendTo(li);
+            $("<em></em>").text(timeString).appendTo(p);
+        }
+    }, function (err) {
+        swal({
+            title: "错误!",
+            text: "获取信息失败!错误代码: " + err.code,
+            type: "error"
+        });
+        console.log(err);
+    });
+}
