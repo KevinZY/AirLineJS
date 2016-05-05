@@ -242,6 +242,11 @@ button {
 }
 
 .message-list li p{
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     font-size: 16px;
     line-height: 40px;
     margin: 5px 10px 5px 10px;

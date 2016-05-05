@@ -330,6 +330,34 @@ function InitRightMenu() {
                         });
                         console.log(err);
                     })
+                } else if(type == 'msg'){
+                    var query = new AV.Query(MSGLIST);
+                    query.get(id).then(function (obj) {
+                        obj.destroy().then(function () {
+                            swal({
+                                title: '成功!',
+                                text: '信息已删除',
+                                type: 'success',
+                                showConfirmButton: false,
+                                timer: 1000
+                            });
+                            refreshMsgs();
+                        }, function (err) {
+                            swal({
+                                title: "错误!",
+                                text: "删除信息失败!错误代码: " + err.code,
+                                type: "error"
+                            });
+                            console.log(err);
+                        });
+                    }, function (err) {
+                        swal({
+                            title: "错误!",
+                            text: "获取信息失败!错误代码: " + err.code,
+                            type: "error"
+                        });
+                        console.log(err);
+                    });
                 }
             });
         return false;
@@ -339,6 +367,36 @@ function InitRightMenu() {
         var id = menu.data("id");
         var type = menu.data("type");
         menu.slideUp(200);
+        if(type == 'msg'){
+            var query = new AV.Query(MSGLIST);
+            query.get(id).then(function (obj) {
+                obj.set('msg', obj.get('msg')).save().then(function () {
+                    swal({
+                        title: '成功!',
+                        text: '信息已重新发送',
+                        type: 'success',
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
+                    refreshMsgs();
+                }, function (err) {
+                    swal({
+                        title: "错误!",
+                        text: "重新发送失败!错误代码: " + err.code,
+                        type: "error"
+                    });
+                    console.log(err);
+                });
+            }, function (err) {
+                swal({
+                    title: "错误!",
+                    text: "获取信息失败!错误代码: " + err.code,
+                    type: "error"
+                });
+                console.log(err);
+            });
+            return false;
+        }
         swal({
                 title: "重命名",
                 text: "请输入新的文件名:",
@@ -455,6 +513,7 @@ function refreshDocs() {
                     });
                 },
                 "contextmenu": function(event) {
+                    $("#rename").text("重命名");
                     event = event || window.event;
                     $("#right_menu").css({
                         position: "fixed",
@@ -496,6 +555,7 @@ function refreshPhotos() {
             $("<img src=" + thumbUrl + "/>").appendTo(box);
             $("<p></p>").text(name).appendTo(pin);
             a.data("id", id).on("contextmenu", function(event) {
+                $("#rename").text("重命名");
                 event = event || window.event;
                 $("#right_menu").css({
                     position: "fixed",
@@ -533,10 +593,25 @@ function refreshMsgs() {
             var object = results[i];
             var msg = object.get('msg');
             var time = object.updatedAt;
+            var id = object.id;
             var timeString ="(" + (time.getMonth()+1) +"月"+time.getDate()+"日 "+time.getHours()+":"+time.getMinutes()+")";
             var li = $("<li></li>").appendTo(msgList);
             var p = $("<p></p>").text(msg).appendTo(li);
             $("<em></em>").text(timeString).appendTo(p);
+
+            li.data("id",id).on("contextmenu", function(event) {
+                $("#rename").text("重新发送");
+                event = event || window.event;
+                $("#right_menu").css({
+                    position: "fixed",
+                    top: event.clientY + "px",
+                    left: event.clientX + "px"
+                }).data({
+                    'id': $(this).data('id'),
+                    'type': 'msg'
+                }).slideDown(200);
+                return false;
+            });
         }
     }, function (err) {
         swal({
